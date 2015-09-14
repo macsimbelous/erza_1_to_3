@@ -8,7 +8,7 @@ namespace erza_1_to_3
 {
     class Program
     {
-        static public string Erza3_ConnectionString = @"data source=C:\temp\Erza3.sqlite";
+        static public string Erza3_ConnectionString = @"data source=.\Erza3.sqlite";
         static void Main(string[] args)
         {
             List<CImage> img_list = new List<CImage>();
