@@ -87,18 +87,18 @@ namespace erza_1_to_3
                 SQLiteTransaction transact = connection.BeginTransaction();
                 for (int i = 0; i < img_list.Count; i++)
                 {
-                    string ins = "INSERT INTO images (is_deleted, hash, file_path) VALUES (@is_deleted, @hash, @file_path);";
+                    string ins = "INSERT INTO images (is_deleted, hash, file_name) VALUES (@is_deleted, @hash, @file_name);";
                     using (SQLiteCommand ins_command = new SQLiteCommand(ins, connection))
                     {
                         ins_command.Parameters.AddWithValue("hash", img_list[i].hash_str);
                         ins_command.Parameters.AddWithValue("is_deleted", img_list[i].is_deleted);
                         if (string.IsNullOrEmpty(img_list[i].file))
                         {
-                            ins_command.Parameters.AddWithValue("file_path", System.DBNull.Value);
+                            ins_command.Parameters.AddWithValue("file_name", System.DBNull.Value);
                         }
                         else
                         {
-                            ins_command.Parameters.AddWithValue("file_path", img_list[i].file);
+                            ins_command.Parameters.AddWithValue("file_name", img_list[i].file);
                         }
                         ins_command.ExecuteNonQuery();
                     }
